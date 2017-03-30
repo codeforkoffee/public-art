@@ -4,7 +4,7 @@ require 'rails_helper'
 # tests you'll ever run into. Still, this is a useful stub of a test for our
 # application.
 
-RSpec.describe LocationsController, type: :controller do
+RSpec.describe LocationsController, type: :controller, vcr: true do
   render_views
 
   let(:user) { User.create!(email: "test@test.com", password: "abcd1234") }
@@ -36,6 +36,16 @@ RSpec.describe LocationsController, type: :controller do
       get :show, params: {id: location.to_param}
 
       expect(assigns(:location)).to eq(location)
+    end
+
+    it "shows a Google Maps embedded map on the page" do
+      location = Location.create! valid_attributes
+
+      get :show, params: {id: location.to_param}
+
+      expect(response.body).to include("google.com/maps/embed")
+      expect(response.body).to include("q=#{location.address}")
+      expect(response.body).to include(Rails.application.secrets.google_api_key)
     end
   end
 

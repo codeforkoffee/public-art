@@ -42,9 +42,15 @@ gem 'rails-controller-testing'
 
 gem "guard"
 gem "guard-rspec"
+gem "geocoder"
+gem "twilio-ruby"
+gem 'resque'
+gem 'foreman'
 
 group :development, :test do
   gem 'pry'
+  gem 'webmock'
+  gem 'vcr'
 end
 
 group :development do

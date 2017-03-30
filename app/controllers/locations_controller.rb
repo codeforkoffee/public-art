@@ -22,7 +22,6 @@ class LocationsController < ApplicationController
   # POST /locations
   def create
     @location = Location.new(location_params)
-
     if @location.save
       redirect_to @location, notice: 'Location was successfully created.'
     else

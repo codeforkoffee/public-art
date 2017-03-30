@@ -1,0 +1,3 @@
+class TextMessager < ApplicationRecord
+
+end

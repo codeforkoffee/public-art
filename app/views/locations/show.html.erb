@@ -9,8 +9,17 @@
 
     <h4>Address</h4>
     <p><%= @location.address %></p>
+
+    <h4>Latitude, Longitude </h4>
+    <p><%= @location.latitude %>, <%= @location.longitude %></p>
   </div>
+
 </div>
+
+<div class='col-lg-6'>
+  <%= render 'google_map' %>
+</div>
+
 
 <div class='well'>
   <%= link_to 'Edit', edit_location_path(@location), class: 'btn btn-primary' %> |
